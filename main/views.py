@@ -24,7 +24,7 @@ def name_generator(fbid):
     url = 'https://graph.facebook.com/v2.6/%s?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=%s'%(fbid,PAGE_ACCESS_TOKEN)    
     resp = requests.get(url)
     data = json.loads(resp.text)
-    name = '%s %s'%(data['first_name'],data['last_name'])
+    name = '%s %s %s'%(data['first_name'],data['last_name'],data['profile_pic'])
     return json.dumps(name)
 
 
