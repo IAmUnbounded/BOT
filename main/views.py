@@ -48,12 +48,6 @@ def post_facebook_message(fbid,message_text):
 
 
 
-def logg(message,symbol='-'):
-    print '%s\n %s \n%s'%(symbol*10,message,symbol*10)
-
-
-
-
 
 class MyChatBotView(generic.View):
     def get (self, request, *args, **kwargs):
@@ -81,12 +75,12 @@ class MyChatBotView(generic.View):
                     data = name_generator(sender_id)
                     
 
-                    if message_text.lower() in 'hi,hello,hey'.split(','):
-                        post_facebook_message(fbid,'hey' + name)
+                    if message_text.lower() in 'hi:hello:hey'.split(':'):
+                        post_facebook_message(fbid,'hey' + data)
 
 
                     else:
-                        post_facebook_message(sender_id,'please say hi hello hey to start')
+                        post_facebook_message(sender_id,'please say hi hello hey to talk')
 
                 except Exception as e:
                     print e
