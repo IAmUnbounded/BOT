@@ -73,7 +73,7 @@ class MyChatBotView(generic.View):
 
                     
 
-                    message_text in 'hey':
+                    if message_text in 'hey':
                         data = name_generator(sender_id)
                         post_facebook_message(fbid,'hey' + data)
 
