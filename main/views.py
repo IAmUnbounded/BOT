@@ -24,7 +24,8 @@ def name_generator(fbid):
     url = 'https://graph.facebook.com/v2.6/fbid?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=' + PAGE_ACCESS_TOKEN 
     resp = requests.get(url)
     data =json.loads(resp.text)
-    return data
+    name = '%s %s'%(data['first_name'],data['last_name'])
+    return name
 
 
 
@@ -78,7 +79,7 @@ class MyChatBotView(generic.View):
                     message_text = message['message']['text']
 
                     data = name_generator(sender_id)
-                    name = '%s %s'%(data['first_name'],data['last_name'])
+                    
 
                     if message_text.lower() in 'hi,hello,hey'.split(','):
                         post_facebook_message(fbid,'hey' + name)
