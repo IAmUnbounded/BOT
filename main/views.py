@@ -74,13 +74,13 @@ class MyChatBotView(generic.View):
 
                     
 
-                    if message_text in 'hey':
-                        data = name_generator(sender_id)
-                        post_facebook_message(fbid,'hey' + data)
+                
+                    data = name_generator(sender_id)
+                    post_facebook_message(fbid,'hey' + data)
 
 
-                    else:
-                        post_facebook_message(sender_id,'please say hey to talk')
+                    #else:
+                        #post_facebook_message(sender_id,'please say hey to talk')
 
                 except Exception as e:
                     print e
