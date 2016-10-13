@@ -36,10 +36,10 @@ def name_generator(fbid):
 
 
 def post_facebook_message(fbid,message_text):
-	post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
-	response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
-	status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
-	print status.json()
+    post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
+    response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
+    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+    print status.json()
 
 
 
@@ -86,10 +86,13 @@ class MyChatBotView(generic.View):
 
                     else:
                         post_facebook_message(sender_id,'please say hi hello hey to start')
-                            
+
+                except Exception as e:
+                    print e
+                    pass
 
 
         return HttpResponse() 
 
 def index(request):
-	return HttpResponse('Hello world')
+    return HttpResponse('Hello world')
