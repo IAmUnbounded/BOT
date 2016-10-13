@@ -77,7 +77,7 @@ class MyChatBotView(generic.View):
                     sender_id = message['sender']['id']
                     message_text = message['message']['text']
 
-                    data = userdeatils(sender_id)
+                    data = name_generator(sender_id)
                     name = '%s %s'%(data['first_name'],data['last_name'])
 
                     if message_text.lower() in 'hi,hello,hey'.split(','):
