@@ -72,10 +72,10 @@ class MyChatBotView(generic.View):
                     sender_id = message['sender']['id']
                     message_text = message['message']['text']
 
-                    data = name_generator(sender_id)
                     
 
                     if message_text.lower() in 'hi:hello:hey'.split(':'):
+                        data = name_generator(sender_id)
                         post_facebook_message(fbid,'hey' + data)
 
 
