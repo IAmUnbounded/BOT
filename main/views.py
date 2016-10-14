@@ -29,7 +29,7 @@ def name_generator(fbid):
     return json.dumps(name)
 
 def info_food(upc):
-    url = 'https://api.nutritionix.com/v1_1/item?upc=%d&appId=%s&appKey=%s'%(upc,api_id,api_key)
+    url = 'https://api.nutritionix.com/v1_1/item?upc=%s&appId=%s&appKey=%s'%(upc,api_id,api_key)
     resp = requests.get(url)
     data = json.loads(resp.text)
     info = '%s '%(data['nf_calories'])
