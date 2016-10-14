@@ -39,7 +39,7 @@ def info_food(upc):
 
 def if_number(number):
     try: 
-        int(s)
+        int(number)
         return True
     except ValueError:
         return False
