@@ -98,8 +98,8 @@ class MyChatBotView(generic.View):
 
 
                     elif if_number(message_text) == True:
-                        data = info_food(upc)
-                        post_facebook_message(sender_id,'calories %s '%(data))    
+                        calories_count = info_food(upc)
+                        post_facebook_message(sender_id,'calories %s'%(calories_count))    
 
 
                     else:
