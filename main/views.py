@@ -28,12 +28,22 @@ def name_generator(fbid):
     name = '%s %s '%(data['first_name'],data['last_name'])
     return json.dumps(name)
 
-def info_food():
-    url = 'https://api.nutritionix.com/v1_1/item?upc=49000036756&appId=%s&appKey=%s'%(api_id,api_key)
+def info_food(upc):
+    url = 'https://api.nutritionix.com/v1_1/item?upc=%d&appId=%s&appKey=%s'%(upc,api_id,api_key)
     resp = requests.get(url)
     data = json.loads(resp.text)
     info = '%s '%(data['nf_calories'])
     return json.dumps(info)
+
+
+
+def if_number(number):
+    try:
+        int(number)
+    except ValueError:
+        return False
+    else:
+        return True
 
 
 
@@ -84,13 +94,13 @@ class MyChatBotView(generic.View):
 
                     if 'hey' in message_text:
                         data = name_generator(sender_id)
-                        post_facebook_message(sender_id,'hey' + data + ' , sup')
+                        post_facebook_message(sender_id,'hey' + data +  , 'enter upc code from packet')
 
 
 
-                    elif 'food' in message_text:
-                        data = info_food()
-                        post_facebook_message(sender_id,data)    
+                    elif if_number(message_text) == True:
+                        data = info_food(upc)
+                        post_facebook_message(sender_id,'calories' data)    
 
 
                     else:
