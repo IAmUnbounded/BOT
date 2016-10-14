@@ -33,7 +33,7 @@ def info_food():
     url = 'https://api.nutritionix.com/v1_1/search/cheddar%20Cheese?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=%s&appKey=%s'%(api_id,api_key)
     resp = requests.get(url)
     data = json.loads(resp.text)
-    info = '%s '%(data['item_name'])
+    info = '%s '%(data['nf_calories'])
     return json.dumps(name)
 
 
