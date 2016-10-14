@@ -94,13 +94,13 @@ class MyChatBotView(generic.View):
 
                     if 'hey' in message_text:
                         data = name_generator(sender_id)
-                        post_facebook_message(sender_id,'hey' + data +  , 'enter upc code from packet')
+                        post_facebook_message(sender_id, 'hey %s enter upc code from packet'%(data))
 
 
 
                     elif if_number(message_text) == True:
                         data = info_food(upc)
-                        post_facebook_message(sender_id,'calories' data)    
+                        post_facebook_message(sender_id,'calories %s '%(data))    
 
 
                     else:
