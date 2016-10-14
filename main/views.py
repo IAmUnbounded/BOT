@@ -89,7 +89,7 @@ class MyChatBotView(generic.View):
 
 
 
-                    if 'food' in message_text:
+                    elif 'food' in message_text:
                         data = info_food()
                         post_facebook_message(sender_id,data)    
 
