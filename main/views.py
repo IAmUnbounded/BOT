@@ -16,7 +16,8 @@ import requests
 VERIFY_TOKEN = 'nutrition'
 PAGE_ACCESS_TOKEN = 'EAAPZCiQfbWcEBAM3c4BzZBZC4ptcexlskgXTUfWj3AjZBjifr4KuuwE3OoZB0p2DRexBdLPoG4xve0dtizbVrOfnOY3aqqtDdCcneg16AwZBfIZCSXrG32mJ4DZBj1My6kehr2DeBIWpcQH4TMZCZAbD8E0VEZCbVMIMCbMaj254KXBFgZDZD'
 
-
+api_id = 'b3dde248'
+api_key = '3810995907ea7f351fda950468c3c0a6'
 
 
 
@@ -26,6 +27,15 @@ def name_generator(fbid):
     data = json.loads(resp.text)
     name = '%s %s '%(data['first_name'],data['last_name'])
     return json.dumps(name)
+
+
+def info_food():
+    url = 'https://api.nutritionix.com/v1_1/search/cheddar%20Cheese?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=%s&appKey=%s'%(api_id,api_key)
+    resp = requests.get(url)
+    data = json.loads(resp.text)
+    info = '%s '%(data['item_name'])
+    return json.dumps(name)
+
 
 
 
@@ -76,6 +86,12 @@ class MyChatBotView(generic.View):
                     if 'hey' in message_text:
                         data = name_generator(sender_id)
                         post_facebook_message(sender_id,'hey' + data + ' , sup')
+
+
+
+                    if 'food' in message_text:
+                        data = info_food()
+                        post_facebook_message(sender_id,data)    
 
 
                     else:
