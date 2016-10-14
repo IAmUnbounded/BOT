@@ -38,12 +38,11 @@ def info_food(upc):
 
 
 def if_number(number):
-    try:
-        int(number)
+    try: 
+        int(s)
+        return True
     except ValueError:
         return False
-    else:
-        return True
 
 
 
