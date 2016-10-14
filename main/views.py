@@ -28,13 +28,12 @@ def name_generator(fbid):
     name = '%s %s '%(data['first_name'],data['last_name'])
     return json.dumps(name)
 
-
 def info_food():
-    url = 'https://api.nutritionix.com/v1_1/search/cheddar%20Cheese?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=%s&appKey=%s'%(api_id,api_key)
+    url = 'https://api.nutritionix.com/v1_1/item?upc=49000036756&appId=%s&appKey=%s'%(api_id,api_key)
     resp = requests.get(url)
     data = json.loads(resp.text)
     info = '%s '%(data['nf_calories'])
-    return json.dumps(name)
+    return json.dumps(info)
 
 
 
