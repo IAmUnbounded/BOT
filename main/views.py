@@ -19,8 +19,6 @@ PAGE_ACCESS_TOKEN = 'EAAPZCiQfbWcEBAM3c4BzZBZC4ptcexlskgXTUfWj3AjZBjifr4KuuwE3Oo
 api_id = 'b3dde248'
 api_key = '3810995907ea7f351fda950468c3c0a6'
 
-
-
 def name_generator(fbid):
     url = 'https://graph.facebook.com/v2.6/%s?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=%s'%(fbid,PAGE_ACCESS_TOKEN)    
     resp = requests.get(url)
@@ -46,23 +44,11 @@ def if_number(number):
 
 
 
-
-
-
-
-
-
-
 def post_facebook_message(fbid,message_text):
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
     print status.json()
-
-
-
-
-
 
 
 
